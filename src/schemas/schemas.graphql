@@ -1,0 +1,117 @@
+""" Query para Consultar Datos """
+type Query {
+    # Agentes
+    getAgentesAll: [Agentes]
+    # Broadcast
+    getBroadcast:      [BroadcastDet]
+    getBroadcastAll:   [Control]
+    getBroadcastBy (id: Int!) : Control
+    getTotalBroadcast: String
+    getCantBroadcast:  [BroadcastCant]
+    # Enviados
+    getEnviadosAll:   [Enviados]
+    getTotalEnviados: String
+
+    # Respuestas
+    getRespuestas:     [Respuestas]
+    getCantRespuetas:  [CantRespuestas]
+    getCantRtasComps:  [CantRtasComps]
+
+    # Usuarios
+    getUsuariosAll: [Usuarios]
+}
+
+type Agentes {
+    AgentId:    ID!
+    Remitente:  String
+    Logica:     String
+    TipoAgente: String
+    CantidadPreguntas: Int
+    Address:    String
+}
+
+type Control {
+    BId:      ID!
+    AgentId:  Agentes!
+    Name:     String
+    Descripcion: String
+    FechaIn:  String
+    FechaOut: String
+    Tin:      String
+    Tout:     String
+    Sent:     Int
+    Lineas:   Int
+}
+
+type Enviados {
+    Bid:  ID!
+    Line: Int
+    Tin:  String
+    Send: Int
+    St:   Int
+}
+
+type Estados {
+    IdEstado: ID!
+    Estado:   String
+}
+
+type Respuestas {
+    Id:           ID!
+    BId:          Int
+    AgentId:      Int
+    Linea:        String
+    NroRespuesta: String
+    Respuestas:   String
+}
+
+type SendVal {
+    Send:    ID!
+    descrip: String
+}
+
+type Usuarios {
+    ID_Usuario:      ID!
+    Legajo:          String
+    Usuario:         String
+    ID_Grupo:        Int
+    Nivel_De_Acceso: String
+    MailCompleto:    String
+}
+
+type BroadcastDet {
+    BId:        Int
+    Name:       String
+    Lineas:     Int
+    FechaIn:    String
+    Tin:        String
+    FechaOut:   String
+    Tout:       String
+    Remitente:  String
+    Logica:     String
+    TipoAgente: String
+    Estado:     String
+}
+
+type BroadcastCant {
+    Sent:       Int
+    Estado:     String
+    CantBroadcast: Int
+}
+
+type CantRespuestas {
+    BId:        Int
+    AgentId:    Int
+    CantPtas:   Int
+    CantLineas: Int
+    RtasHasta:  String
+    CantRtas:   Int
+}
+
+type CantRtasComps {
+    Bid:          Int
+    CantLineas:   Int
+    Send:         Int
+    descrip:      String
+    CantRtasComp: Int
+}

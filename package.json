@@ -1,0 +1,39 @@
+{
+    "name": "api-graphql-apollo-srv",
+    "version": "1.0.0",
+    "description": "API GraphQL (Servidor)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon ./src/index.js --exec babel-node -e js"
+    },
+    "keywords": [
+        "Node",
+        "Express",
+        "Apollo Server",
+        "GraphQL",
+        "MongoDB",
+        "Mongoose"
+    ],
+    "author": "Damian Navia",
+    "license": "ISC",
+    "dependencies": {
+        "apollo-server-express": "^2.5.0",
+        "express": "^4.16.4",
+        "express-graphql": "^0.8.0",
+        "graphql": "^14.2.1",
+        "graphql-import": "^0.7.1",
+        "graphql-sequelize": "^7.0.1",
+        "graphql-tools": "^4.0.4",
+        "mongoose": "^5.5.7",
+        "mysql": "^2.17.1",
+        "mysql2": "^1.7.0",
+        "nodemon": "^1.19.1",
+        "sequelize": "^4.33.4"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-0": "^6.24.1"
+    }
+}
