@@ -1,9 +1,9 @@
 // Importar el módulo del ORM
 import Sequelize from 'sequelize';
 import { sequelize } from '../../data/db';
-import EstadoSeq from '../modelsMysql/estado';
-import ControlSeq from '../modelsMysql/control';
-import AgenteSeq from '../modelsMysql/agente';
+const EstadoSeq = require('../modelsMysql/estado');
+const ControlSeq =  require ('../modelsMysql/control');
+const AgenteSeq = require('../modelsMysql/agente');
 // Importar los modelos
 import {
     Agentes,
@@ -38,9 +38,14 @@ export const resolvers = {
             });
         },*/
         async getBroadcast() {
-            let estado = await AgenteSeq.findAll();
-            console.log(estado);
-            return estado;
+            let control = await ControlSeq.findAll({
+                include: [{
+                    model: EstadoSeq
+                }, {
+                    model: AgenteSeq,
+                }]
+            });
+            return control;
         },
         async getBroadcastBy (root, { id }) {
             return Control.findByky(id)

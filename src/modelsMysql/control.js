@@ -1,5 +1,7 @@
 var DataTypes = require('sequelize');
 import { sequelize } from '../../data/db';
+const Agente = require('./agente');
+const Estado = require('./estado');
 
 const control = sequelize.define('control', {
     BId: {
@@ -27,10 +29,21 @@ const control = sequelize.define('control', {
     Tout: {
         type: DataTypes.DATE(6)
     },
+    AgentId: {
+        type: DataTypes.BIGINT,
+    },
+    Sent: {
+        type: DataTypes.BIGINT,
+    }
+
     //AgentId: {}
 }, {
     tableName: 'control',
     timestamps: false
 });
+
+control.belongsTo(Agente, {foreignKey: 'AgentId',targetKey: 'AgentId'}, {as: 'Agente'});
+control.belongsTo(Estado, {foreignKey: 'Sent', targetKey: 'IdEstado'}), {as: 'Estado'};
+
 
 module.exports = control;

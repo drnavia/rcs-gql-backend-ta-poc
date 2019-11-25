@@ -41,6 +41,7 @@ type Control {
     Tout:     String
     Sent:     Int
     Lineas:   Int
+
 }
 
 type Enviados {
@@ -91,6 +92,9 @@ type BroadcastDet {
     Logica:     String
     TipoAgente: String
     Estado:     String
+    AgentId:    ID
+    agente: Agentes
+    estado: Estados
 }
 
 type BroadcastCant {
