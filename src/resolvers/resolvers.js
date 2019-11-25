@@ -1,6 +1,9 @@
 // Importar el módulo del ORM
 import Sequelize from 'sequelize';
 import { sequelize } from '../../data/db';
+import EstadoSeq from '../modelsMysql/estado';
+import ControlSeq from '../modelsMysql/control';
+import AgenteSeq from '../modelsMysql/agente';
 // Importar los modelos
 import {
     Agentes,
@@ -21,7 +24,7 @@ export const resolvers = {
         async getBroadcastAll (root, args){
             return Control.findAll()
         },*/
-        getBroadcast() {
+        /*getBroadcast() {
             return sequelize.query(
                 `SELECT c.BId, c.Name, c.Lineas, c.FechaIn, c.Tin, c.FechaOut, c.Tout, 
                         a.Remitente, a.Logica, a.TipoAgente , e.Estado 
@@ -33,6 +36,11 @@ export const resolvers = {
                 nest: true,
                 type: sequelize.QueryTypes.SELECT,
             });
+        },*/
+        async getBroadcast() {
+            let estado = await AgenteSeq.findAll();
+            console.log(estado);
+            return estado;
         },
         async getBroadcastBy (root, { id }) {
             return Control.findByky(id)
